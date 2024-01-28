@@ -37,6 +37,11 @@ module "database" {
   instance_class = var.rds_instance_class
 }
 
+module "lambda_connector" {
+  source = "./modules/lambda-connector"
+  vpc_id = module.vpc.vpc_id
+}
+
 module "athena" {
   source    = "./modules/athena"
   principal = var.athena_user_principal

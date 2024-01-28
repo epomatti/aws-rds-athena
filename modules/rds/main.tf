@@ -1,12 +1,18 @@
+locals {
+  username = "athena"
+  password = "p4ssw0rd"
+  database = "athenadb"
+}
+
 resource "aws_db_instance" "default" {
   identifier = "rds-${var.workload}"
 
-  db_name        = "athenadb"
+  db_name        = local.database
   engine         = "postgres"
   engine_version = "16.1"
 
-  username   = "athena"
-  password   = "p4ssw0rd"
+  username   = local.username
+  password   = local.password
   kms_key_id = var.kms_key_arn
 
   iam_database_authentication_enabled = true
@@ -47,12 +53,7 @@ resource "aws_db_instance" "default" {
   delete_automated_backups = true
 
   # Monitoring
-  performance_insights_enabled          = true
-  performance_insights_retention_period = 7 # Free
-  performance_insights_kms_key_id       = var.kms_key_arn
-  monitoring_interval                   = 0
-  monitoring_role_arn                   = ""
-  enabled_cloudwatch_logs_exports       = ["postgresql", "upgrade"]
+  performance_insights_enabled = false
 }
 
 ### VPC ###
