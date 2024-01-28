@@ -1,8 +1,26 @@
-# aws-rds-athena
+# AWS RDS Athena
 
-Querying RDS in a private VPC from Athena
+Querying RDS in a private VPC from Athena.
 
+Create the variables file set the values:
 
-postgres://jdbc:postgresql://rds-athena.cet9hek9zqmv.us-east-2.rds.amazonaws.com:5432/athenadb?user=athena&password=p4ssw0rd
+```sh
+cp config/template.tfvars .auto.tfvars
+```
 
-https://docs.aws.amazon.com/athena/latest/ug/connectors-postgresql.html
+Create the resources:
+
+```sh
+terraform init
+terraform apply -auto-approve
+```
+
+In Athena, create a [PostgreSQL Lambda connector][1].
+
+The connection string will look something like this:
+
+```
+postgres://jdbc:postgresql://<HOST>:5432/athenadb?user=athena&password=p4ssw0rd
+```
+
+[1]: https://docs.aws.amazon.com/athena/latest/ug/connectors-postgresql.html
