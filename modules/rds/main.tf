@@ -29,7 +29,7 @@ resource "aws_db_instance" "default" {
   storage_type          = "gp3"
 
   # Valid until 2061 with automatic rotation
-  ca_cert_identifier = "rds-ca-rsa4096-g1"
+  # ca_cert_identifier = "rds-ca-rsa4096-g1"
 
   # Security
   storage_encrypted      = true
