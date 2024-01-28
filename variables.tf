@@ -3,8 +3,11 @@ variable "aws_region" {
   default = "us-east-2"
 }
 
-### RDS ###
 variable "rds_instance_class" {
   type    = string
   default = "db.t4g.small"
+}
+
+variable "athena_user_principal" {
+  type = string
 }

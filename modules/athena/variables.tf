@@ -1,0 +1,3 @@
+variable "principal" {
+  type = string
+}

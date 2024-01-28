@@ -25,7 +25,6 @@ module "vpc" {
   workload = local.workload
 }
 
-
 module "database" {
   source      = "./modules/rds"
   workload    = local.workload
@@ -37,3 +36,9 @@ module "database" {
 
   instance_class = var.rds_instance_class
 }
+
+module "athena" {
+  source    = "./modules/athena"
+  principal = var.athena_user_principal
+}
+
